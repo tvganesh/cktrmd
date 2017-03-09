@@ -10,10 +10,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ##
-*’Twas brillig, and the slithy toves<br/> 
+*Twas brillig, and the slithy toves<br/> 
     Did gyre and gimble in the wabe: <br/>
   All mimsy were the borogoves, <br/>
-    And the mome raths outgrabe' <br/>*
+    And the mome raths outgrabe. <br/>*
       
            Jabberwocky by Lewis Carroll
                        
@@ -39,27 +39,72 @@ You should be able to install the package from CRAN and use  many of the functio
 
 (Note: This page is also hosted as a GitHub page at cricketr and also at RPubs as cricketr: A R package for analyzing performances of cricketers
 
+For getting data of a player against a particular country and in the host country I just had to add
+2 extra parameters to tge getPlayerData() function. The cricketr package has been updated with the
+changed functions for getPlayerData() - Tests, getPlayerDataOD() - ODI and getPlayerDataTT() for the
+Twenty20s
+
 The data for the following players have already been obtained with the getPlayerData() function and
-saved as *.csv files. I will be resuing these files, instead of getting them all over again. Hence the lines
+saved as *.csv files. I will be re-using these files, instead of getting them all over again. Hence the lines
 have been commented.
 
-For e,
+For e.g
+We can the data for Sachin Tendulkar in matches played against Australia and in Australia as below. All cricketr 
+functions can be used with data frame as shown below. All the charts show the performance of Tendulkar in Australia against Australia.
 
-The following lines gets player's data of matches played in England and against England
+```{r}
+#tendulkarAus=getPlayerData(35320,opposition=2,host=2,file="tendulkarVsAusInAus.csv",type="batting")
+par(mfrow=c(2,3))
+par(mar=c(4,4,2,2))
+batsman4s("./data/tendulkarVsAusInAus.csv","Tendulkar")
+batsman6s("./data/tendulkarVsAusInAus.csv","Tendulkar")
+batsmanRunsRanges("./data/tendulkarVsAusInAus.csv","Tendulkar")
+batsmanDismissals("./data/tendulkarVsAusInAus.csv","Tendulkar")
+batsmanAvgRunsGround("./data/tendulkarVsAusInAus.csv","Tendulkar")
+batsmanMovingAverage("./data/tendulkarVsAusInAus.csv","Tendulkar")
+dev.off()
+```
+
+While we can analyze the performance of a player against an opposition in some host country, I wanted to
+compare the relative performances of players, to see how players from different nations
+play in a host country which is not their home ground.
+
+
+The following lines gets player's data of matches played in England and against England. The Oval,Lord's are
+famous for generating some dangerous swing. I choose the following players
+1.Sir Don Bradman (Aus)
+2.Steve Waugh (Aus)
+3. Rahul Dravid (Ind)
+4. Vivian Richards (WI)
+5. Sachin Tendulkar (Ind)
+
 ```{r }
 #tendulkarEng=getPlayerData(35320,opposition=1,host=1,file="tendulkarVsEngInEng.csv",type="batting")
-#laraEng=getPlayerData(52337,opposition=1,host=1,file="laraVsEngInEng.csv",type="batting")
-#pontingEng=getPlayerData(7133,opposition=1,host=1,file="pontingVsEngInEng.csv",type="batting")
-#sangakkaraEng=getPlayerData(50710,opposition=1,host=1,file="sangakkaraVsEngInEng.csv",type="batting")
+#bradmanEng=getPlayerData(4188,opposition=1,host=1,file="bradmanVsEngInEng.csv",type="batting")
+#srwaughEng=getPlayerData(8192,opposition=1,host=1,file="srwaughVsEngInEng.csv",type="batting")
+#dravidEng=getPlayerData(28114,opposition=1,host=1,file="dravidVsEngInEng.csv",type="batting")
+#vrichardEng=getPlayerData(52812,opposition=1,host=1,file="vrichardsEngInEng.csv",type="batting")
 ```
+
+```{r}
+tendulkar <-
+frames <- list("./data/tendulkarVsEngInEng.csv","./data/bradmanVsEngInEng.csv","./data/srwaughVsEngInEng.csv",
+               "./data/dravidVsEngInEng.csv","./data/vrichardsEngInEng.csv")
+names <- list("S Tendulkar","D Bradman","SR Waugh","R Dravid","Viv Richards")
+relativeBatsmanSR(frames,names)
+relativeRunsFreqPerf(frames,names)
+relativeBatsmanCumulativeAvgRuns(frames,names)
+relativeBatsmanCumulativeStrikeRate(frames,names)
+```
+
 
 
 ```{r }
 #tendulkarAus=getPlayerData(35320,opposition=2,host=2,file="tendulkarVsAusInAus.csv",type="batting")
-#laraAus=getPlayerData(52337,opposition=2,host=2,file="laraVAusInAus.csv",type="batting")
-#sangakkaraAus=getPlayerData(50710,opposition=2,host=2,file="sangakkaraVsAusInAus.csv",type="batting")
+#vrichardAus=getPlayerData(52812,opposition=2,host=2,file="vrichardsVAusInAus.csv",type="batting")
+#dgowerAus=getPlayerData(13418,opposition=2,host=2,file="dgpwerVsAusInAus.csv",type="batting")
 #kallisAus=getPlayerData(45789,opposition=2,host=2,file="kallisVsAusInAus.csv",type="batting")
-#anCookAus=getPlayerData(11728,opposition=2,host=2,file="ancookVsWIInWI.csv",type="batting")
+anCookAus=getPlayerData(11728,opposition=2,host=2,file="ancookVsWIInWI.csv",type="batting")
 
 ```
 
