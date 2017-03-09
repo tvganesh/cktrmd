@@ -1,0 +1,113 @@
+---
+title: 'cricketr flexes new muscles: The final analysis'
+author: "Tinniam V Ganesh"
+date: "March 6, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##
+*’Twas brillig, and the slithy toves<br/> 
+    Did gyre and gimble in the wabe: <br/>
+  All mimsy were the borogoves, <br/>
+    And the mome raths outgrabe' <br/>*
+      
+           Jabberwocky by Lewis Carroll
+                       
+
+No analysis of cricket is complete, without determining how players would perform in the host country.
+Playing Test cricket on foreign pitches, in the host country, is a 'real test' for 
+both batsmen and bowlers. Players, who can perform consistently both on domestic and foreign pitches
+are the genuinely class players. Player performance on foreign pitches lets us differentiate the 
+paper tigers, and home ground bullies among batsmen. Similarly, spinners who perform well, only on rank 
+turners in home ground or pace bowlers who can only swing and generate bounce on specially prepared
+pitches are not the genuine spinner or pace bowler.
+
+So this post, helps in identifying those with real strengths and those who play good only when 
+the conditions are in favor in home grunds. So this post brings a certain level of finality to
+the analysis of players with my R package 'cricketr'
+
+Besides, I also meant 'final analysis' in the literal sense, as I intend to take a long break
+from cricket analytics and focus on some other domains like Neural Networks, Deep Learning and
+Spark. 
+
+As already mentioned, my R package 'cricketr' uses the statistics info available in ESPN Cricinfo Statsguru.
+You should be able to install the package from CRAN and use  many of the functions available in the package. Please be mindful of  [ESPN Cricinfo Terms of Use](http://www.espncricinfo.com/ci/content/site/company/terms_use.html)
+
+(Note: This page is also hosted as a GitHub page at cricketr and also at RPubs as cricketr: A R package for analyzing performances of cricketers
+
+The data for the following players have already been obtained with the getPlayerData() function and
+saved as *.csv files. I will be resuing these files, instead of getting them all over again. Hence the lines
+have been commented.
+
+For e,
+
+The following lines gets player's data of matches played in England and against England
+```{r }
+#tendulkarEng=getPlayerData(35320,opposition=1,host=1,file="tendulkarVsEngInEng.csv",type="batting")
+#laraEng=getPlayerData(52337,opposition=1,host=1,file="laraVsEngInEng.csv",type="batting")
+#pontingEng=getPlayerData(7133,opposition=1,host=1,file="pontingVsEngInEng.csv",type="batting")
+#sangakkaraEng=getPlayerData(50710,opposition=1,host=1,file="sangakkaraVsEngInEng.csv",type="batting")
+```
+
+
+```{r }
+#tendulkarAus=getPlayerData(35320,opposition=2,host=2,file="tendulkarVsAusInAus.csv",type="batting")
+#laraAus=getPlayerData(52337,opposition=2,host=2,file="laraVAusInAus.csv",type="batting")
+#sangakkaraAus=getPlayerData(50710,opposition=2,host=2,file="sangakkaraVsAusInAus.csv",type="batting")
+#kallisAus=getPlayerData(45789,opposition=2,host=2,file="kallisVsAusInAus.csv",type="batting")
+#anCookAus=getPlayerData(11728,opposition=2,host=2,file="ancookVsWIInWI.csv",type="batting")
+
+```
+
+# Indian batsmen against Australia
+
+```{r}
+#tendulkarAus=getPlayerData(35320,opposition=2,host=2,file="tendulkarVsAusInAus.csv",type="batting")
+#gavaskarAus=getPlayerData(28794,opposition=2,host=2,file="gavaskarVsAusInAus.csv",type="batting")
+#kohliAus=getPlayerData(253802,opposition=2,host=12file="kohliVsEngInAus.csv",type="batting")
+#sehwagAus=getPlayerData(35263,opposition=2,host=2,file="sehwagVsAusInAus.csv",type="batting")
+```
+
+
+#Indian batsmen against England
+
+```{r}
+#tendulkarEng=getPlayerData(35320,opposition=1,host=1,file="tendulkarVsEngInEng.csv",type="batting")
+#dravidEng=getPlayerData(28114,opposition=1,host=1,file="dravidVsEngInEng.csv",type="batting")
+#kohliEng=getPlayerData(253802,opposition=1,host=1,file="kohliVsEngInEng.csv",type="batting")
+#gangulyEng=getPlayerData(28779,opposition=1,host=1,file="gangulyVsEngInEng.csv",type="batting")
+
+```
+
+
+#tendulkarEng=getPlayerData(35320,opposition=1,host=1,file="tendulkarVsEngInEng.csv",type="batting")
+#dravidEng=getPlayerData(28114,opposition=1,host=1,file="dravidVsEngInEng.csv",type="batting")
+#gavaskarEng=getPlayerData(28794,opposition=1,host=1,file="gavaskarVsEngInEng.csv",type="batting")
+#kohliEng=getPlayerData(253802,opposition=1,host=1,file="kohliVsEngInEng.csv",type="batting")
+#gangulyEng=getPlayerData(28779,opposition=1,host=1,file="gangulyVsEngInEng.csv",type="batting")
+
+
+```{r}
+
+#laraEng=getPlayerData(52337,opposition=1,host=1,file="laraVsEngInEng.csv",type="batting")
+#pontingEng=getPlayerData(7133,opposition=1,host=1,file="pontingVsEngInEng.csv",type="batting")
+#sangakkaraEng=getPlayerData(50710,opposition=1,host=1,file="sangakkaraVsEngInEng.csv",type="batting")
+#ancookWI=getPlayerData(11728,opposition=4,host=4,file="ancookVsWIInWI.csv",type="batting")
+```
+
+You can also embed plots, for example:
+
+```{r }
+#steynInd=getPlayerData(47492 ,opposition=6,host=6,file="steynVsIndInInd.csv",type="bowling")
+#mcgrathSL=getPlayerData(6565 ,opposition=8,host=8,file="mcgrathVsSLinSL.csv",type="bowling")
+#kumble=getPlayerData(30176  ,opposition=1,host=1,file="kumbleVsEngInEng.csv",type="bowling")
+#murali=getPlayerData(49636  ,opposition=1,host=1,file="muraliVsEngInEng.csv",type="bowling")
+#warne=getPlayerData(8166  ,opposition=1,host=1,file="warneVsEngInEng.csv",type="bowling")
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
