@@ -37,7 +37,7 @@ Spark.
 As already mentioned, my R package 'cricketr' uses the statistics info available in ESPN Cricinfo Statsguru.
 You should be able to install the package from CRAN and use  many of the functions available in the package. Please be mindful of  [ESPN Cricinfo Terms of Use](http://www.espncricinfo.com/ci/content/site/company/terms_use.html)
 
-(Note: This page is also hosted as a GitHub page at cricketr and also at RPubs as cricketr: A R package for analyzing performances of cricketers
+(Note: This page is also hosted  at RPubs as cricketrFinalAnalysys. You can download the PDF file at  cricketrFinalAnalysys.
 
 For getting data of a player against a particular country and in the host country I just had to add
 2 extra parameters to the getPlayerData() function. The cricketr package has been updated with the
@@ -55,11 +55,16 @@ library(cricketr)
 
 ####1. Performance of a batsman against a host ountry in the host country
 For e.g We can the get thedata for Sachin Tendulkar for matches played against Australia and in Australia
-as below. All cricketr functions can be used with this data frame, as before. 
+Here opposition=2 and host =2 indicate that the opposition is Australia and the host country is also 
+Australia
 
-All the charts show the performance of Tendulkar in Australia against Australia.
-```{r pic1,cache=TRUE}
+```{r}
 #tendulkarAus=getPlayerData(35320,opposition=2,host=2,file="tendulkarVsAusInAus.csv",type="batting")
+```
+
+All cricketr functions can be used with this data frame, as before. All the charts show the performance of Tendulkar in Australia against Australia.
+```{r pic1,cache=TRUE}
+
 par(mfrow=c(2,3))
 par(mar=c(4,4,2,2))
 batsman4s("./data/tendulkarVsAusInAus.csv","Tendulkar")
@@ -107,26 +112,17 @@ It can be easily seen that Don Bradman stands heads and shoulders over everybody
 a cumulative average of 100+. He is followed by Viv Richards, who aaverages around ~60. Interestingly
 in English conditions, Rahul Dravid edges out Sachin Tendulkar.
 
-The other 2 plots on relative strike rate and cumulative average strike shows Viv Richards is really
-blasts the bowling. Viv Richards has a strike rate of 70, while Bradman around 60 followed by Tendulkar.
-```{r pic2,cache=TRUE}
+```{r pic2,cache=TRUE,warning=FALSE}
 relativeBatsmanCumulativeAvgRuns(frames,names)
+
+# The other 2 plots on relative strike rate and cumulative average strike rate,shows Viv Richards really
+# blasts the bowling. Viv Richards has a strike rate of 70, while Bradman around 60 followed by Tendulkar.
 relativeBatsmanSR(frames,names)
 relativeBatsmanCumulativeStrikeRate(frames,names)
 
 ```
 
 ###3. Relative performances of international batsmen against Australia in Australia
-```{r }
-#tendulkarAus=getPlayerData(35320,opposition=2,host=2,file="tendulkarVsAusInAus.csv",type="batting")
-#vrichardAus=getPlayerData(52812,opposition=2,host=2,file="vrichardsVAusInAus.csv",type="batting")
-#dgowerAus=getPlayerData(13418,opposition=2,host=2,file="dgpwerVsAusInAus.csv",type="batting")
-#kallisAus=getPlayerData(45789,opposition=2,host=2,file="kallisVsAusInAus.csv",type="batting")
-#anCookAus=getPlayerData(11728,opposition=2,host=2,file="ancookVsWIInWI.csv",type="batting")
-
-```
-
-
 The following players from these countries were chosen
 1. Sachin Tendulkar (India)
 2. Viv Richard (West Indies)
@@ -144,22 +140,23 @@ Alastair Cook of England has fantastic cumulative average of 55+ on the pitches 
 dip towards the end, but we cannot predict whether it would have continued. AN Cook is followed by
 Tendulkar who has a steady average of 50+ runs, after which there is Viv Richards.
 
-With respect to cumulative or relative strike rate Viv Richards is a class apart.He seems to really
-tear into bowlers. David Gower has an excellent strike rate and is followed by Tendulkar
-```{r pic3,cache=TRUE}
+```{r pic3,cache=TRUE,warning=FALSE}
 relativeBatsmanCumulativeAvgRuns(frames,names)
+
+#With respect to cumulative or relative strike rate Viv Richards is a class apart.He seems to really
+#tear into bowlers. David Gower has an excellent strike rate and is followed by Tendulkar
 relativeBatsmanSR(frames,names)
 relativeBatsmanCumulativeStrikeRate(frames,names)
 ```
 
 
 #4. Relative performances of international batsmen against India in India
-While England & Australia are famous for bouncy tracks with swing, Indian piches are renowed for
-being extraordinary turners. Also India has always thrown up world class spinners from the spin quartet
+While England & Australia are famous for bouncy tracks with swing, Indian pitches are renowed for
+being extraordinary turners. Also India has always thrown up world class spinners, from the spin quartet
 of BS Chandraskehar, Bishen Singh Bedi, EAS Prasanna, S Venkatraghavan, to the times of dangerous
-Anil Kumble to the more recent Ravichander Ashwon and Harbhajan Singh.
+Anil Kumble, and now  to the more recent Ravichander Ashwon and Harbhajan Singh.
 
-A batsmen who can score runs in India against Indian spinners must be really adept in handling all kinds
+A batsmen who can score runs in India against Indian spinners has to be really adept in handling all kinds
 of spin.
 
 While Clive Lloyd & Alvin Kallicharan had the best performance against India, they have not been 
@@ -170,13 +167,6 @@ So I chose the following international players for the analysis against India
 2. Alastair Cook (England)
 3. Matthew Hayden (Australia)
 4. Viv Richards (West Indies)
-```{r}
-#amlaInd=getPlayerData(43906,opposition=6,host=6,file="amlaVsIndInInd.csv",type="batting")
-#ancookInd=getPlayerData(11728,opposition=6,host=6,file="ancookVsIndInInd.csv",type="batting")
-#mhaydenInd=getPlayerData(5616,opposition=6,host=6,file="mhaydenVsIndInInd.csv",type="batting")
-#vrichardInd=getPlayerData(52812,opposition=6,host=6,file="vrichardsVsIndInInd.csv",type="batting")
-
-```
 
 ````{r}
 frames <- list("./data/amlaVsIndInInd.csv","./data/ancookVsIndInInd.csv","./data/mhaydenVsIndInInd.csv",
@@ -186,12 +176,14 @@ names <- list("H Amla","AN Cook","M Hayden","Viv Riachards")
 ```
 
 Excluding Clive Lloyd & Alvin Kallicharan the next best performer against India is Hashim Amla,followed
-by Alastair Cook, Viv Richards. With respect to strike rate, there is no contest when Viv Richards
-is around. He is clearly te best striker of the ball.
-```{r pic4,cache=TRUE}
-relativeRunsFreqPerf(frames,names)
-relativeBatsmanSR(frames,names)
+by Alastair Cook, Viv Richards.
+```{r pic4,cache=TRUE,warning=FALSE}
 relativeBatsmanCumulativeAvgRuns(frames,names)
+
+#With respect to strike rate, there is no contest when Viv Richards is around. He is clearly the best 
+#striker of the ball regardless of whether it is the pacy wickets of Australia/England or the spinning
+#tracks of the subcontinent
+relativeBatsmanSR(frames,names)
 relativeBatsmanCumulativeStrikeRate(frames,names)
 ```
 
@@ -210,15 +202,6 @@ The following Indian batsmen were chosen
 3. Virat Kohli
 4. Virendar Sehwag
 5. VVS Laxman
-```{r}
-#tendulkarAus=getPlayerData(35320,opposition=2,host=2,file="tendulkarVsAusInAus.csv",type="batting")
-#gavaskarAus=getPlayerData(28794,opposition=2,host=2,file="gavaskarVsAusInAus.csv",type="batting")
-#kohliAus=getPlayerData(253802,opposition=2,host=2,file="kohliVsAusInAus.csv",type="batting")
-#sehwagAus=getPlayerData(35263,opposition=2,host=2,file="sehwagVsAusInAus.csv",type="batting")
-#vvsLaxmanAus=getPlayerData(30750,opposition=2,host=2,file="vvslaxmanVsAusInAus.csv",type="batting")
-```
-
-
 
 ```{r}
 frames <- list("./data/tendulkarVsAusInAus.csv","./data/gavaskarVsAusInAus.csv","./data/kohliVsAusInAus.csv",
@@ -229,12 +212,12 @@ names <- list("S Tendulkar","S Gavaskar","V Kohli","V Sehwag","VVS Laxman")
 
 Virat Kohli has the best overall performance against Australia, with a current cumulative average of 60+ runs
 for the total number of innings played bu him (15). With 15 matches the 2nd best is Virendar Sehwag, followed
-by VVS Laxman>tendulakr maintains a cumulative average of 48+ runs for an excess of 30+ innings.
-Sehwag leads the strike rate against host Australia, followed by Tendulkar.
+by VVS Laxman. Tendulakr maintains a cumulative average of 48+ runs for an excess of 30+ innings.
 
-
-```{r pic5,cache=TRUE}
+```{r pic5,cache=TRUE,warning=FALSE}
 relativeBatsmanCumulativeAvgRuns(frames,names)
+
+# Sehwag leads the strike rate against host Australia, followed by Tendulkar in Australia
 relativeBatsmanSR(frames,names)
 relativeBatsmanCumulativeStrikeRate(frames,names)
 ```
@@ -247,16 +230,6 @@ The top Indian bastmen's performances against England are shown below
 3. Rahul Dravid
 4. Sourav Ganguly
 5. Virat Kohli
-```{r}
-#tendulkarEng=getPlayerData(35320,opposition=1,host=1,file="tendulkarVsEngInEng.csv",type="batting")
-#dravidEng=getPlayerData(28114,opposition=1,host=1,file="dravidVsEngInEng.csv",type="batting")
-#vengsarkarEng=getPlayerData(35654,opposition=1,host=1,file="vengsarkarVsEngInEng.csv",type="batting")
-#gangulyEng=getPlayerData(28779,opposition=1,host=1,file="gangulyVsEngInEng.csv",type="batting")
-#gavaskarEng=getPlayerData(28794,opposition=1,host=1,file="gavaskarVsEngInEng.csv",type="batting")
-#kohliEng=getPlayerData(253802,opposition=1,host=1,file="kohliVsEngInEng.csv",type="batting")
-
-```
-
 
 ```{r}
 frames <- list("./data/tendulkarVsEngInEng.csv","./data/dravidVsEngInEng.csv","./data/vengsarkarVsEngInEng.csv",
@@ -267,25 +240,19 @@ names <- list("S Tendulkar","R Dravid","D Vengsarkar","S Ganguly","S Gavaskar","
 
 Rahul Dravid has the best performance against England and edges out Tendulkar. He is followed by Tendulkar
 and then Sourav Ganguly.
-Tendulkar, Ganguly and Dravid have the best strike rate and in that order.
-
-Incidentally Virat Kohli's performance against England in England so far has been pathetic and he averages
+Note:Incidentally Virat Kohli's performance against England in England so far has been pathetic and he averages
 around 13-15 runs per innings
-```{r pic6,cache=TRUE}
+
+```{r pic6,cache=TRUE,warning=FALSE}
 relativeBatsmanCumulativeAvgRuns(frames,names)
+
+#Tendulkar, Ganguly and Dravid have the best strike rate and in that order.
 relativeBatsmanSR(frames,names)
 relativeBatsmanCumulativeStrikeRate(frames,names)
 ```
 
 #################################################
 ## 8. Top Indian batsmen against West Indies in West Indies
-```{r}
-#tendulkarWI=getPlayerData(35320,opposition=4,host=4,file="tendulkarVsWInWI.csv",type="batting")
-#dravidWI=getPlayerData(28114,opposition=4,host=4,file="dravidVsWInWI.csv",type="batting")
-#vvsLaxmanWI=getPlayerData(30750,opposition=2,host=2,file="vvslaxmanVsWIInWI.csv",type="batting")
-#gavaskarWI=getPlayerData(28794,opposition=4,host=4,file="gavaskarVsWIInWI.csv",type="batting")
-
-```
 
 ```{r}
 frames <- list("./data/tendulkarVsWInWI.csv","./data/dravidVsWInWI.csv","./data/vvslaxmanVsWIInWI.csv",
@@ -298,23 +265,13 @@ names <- list("S Tendulkar","R Dravid","VVS Laxman","S Gavaskar")
 
 Against the West Indies Sunil Gavaskar has heads and shoulders above the rest. Gavaskar has a very impressive
 cumulative average agianst West Indies
-```{r pic7,cache=TRUE}
+```{r pic7,cache=TRUE,warning=FALSE}
 relativeBatsmanCumulativeAvgRuns(frames,names)
-relativeRunsFreqPerf(frames,names)
+
+# VVS Laxman followed by Dravid have a very consistent strike rate against the West Indies
+relativeBatsmanSR(frames,names)
 relativeBatsmanCumulativeStrikeRate(frames,names)
 ```
-
-
-
-```{r }
-#steynInd=getPlayerData(47492 ,opposition=6,host=6,file="steynVsIndInInd.csv",type="bowling")
-#mcgrathSL=getPlayerData(6565 ,opposition=8,host=8,file="mcgrathVsSLinSL.csv",type="bowling")
-#kumble=getPlayerData(30176  ,opposition=1,host=1,file="kumbleVsEngInEng.csv",type="bowling")
-#murali=getPlayerData(49636  ,opposition=1,host=1,file="muraliVsEngInEng.csv",type="bowling")
-#warne=getPlayerData(8166  ,opposition=1,host=1,file="warneVsEngInEng.csv",type="bowling")
-
-```
-
 
 #9.  World's best spinners on tracks suited for pace & bounce
 In this part I compare the performances of the top 3 spinners in recent years and check out
@@ -323,12 +280,12 @@ how they perform onm surfaces that are known for pace, and bounce. I have take t
 1. Anil Kumble (India)
 2. M Muralitharan (Sri Lanka)
 3. Shane Warne (Australia)
-```{r}
-#kumble=getPlayerData(30176  ,opposition=1,host=1,file="kumbleVsEngInEng.csv",type="bowling")
-#murali=getPlayerData(49636  ,opposition=1,host=1,file="muraliVsEngInEng.csv",type="bowling")
-#warne=getPlayerData(8166  ,opposition=1,host=1,file="warneVsEngInEng.csv",type="bowling")
-```
 
+```{r}
+#kumbleEng=getPlayerData(30176  ,opposition=3,host=3,file="kumbleVsEngInEng.csv",type="bowling")
+#muraliEng=getPlayerData(49636  ,opposition=3,host=3,file="muraliVsEngInEng.csv",type="bowling")
+#warneEng=getPlayerData(8166  ,opposition=3,host=3,file="warneVsEngInEng.csv",type="bowling")
+```
 
 #10. Top international spinners against England in England
 ```{r}
@@ -340,19 +297,14 @@ names <- list("Anil KUmble","M Muralitharan","Shane Warne")
 Against England and in England, Muralitharan shines with a cumulative average of nearly 5 wickets
 per match with a peak of almost 8 wickets. Shane Warne has a steady average at 5 wickets and then Anil Kumble.
 
-The order relative cumulative Economy rate, Warne has the best figures,followed by Anil Kumble. Muralitharan
-is much more expensive.
 
-```{r pic8,cache=TRUE} 
+
+```{r pic8,cache=TRUE,warning=FALSE} 
 relativeBowlerCumulativeAvgWickets(frames,names)
+# The order relative cumulative Economy rate, Warne has the best figures,followed by Anil Kumble. Muralitharan
+# is much more expensive.
 relativeBowlerCumulativeAvgEconRate(frames,names)
 
-```
-
-```{r}
-#kumbleSA=getPlayerData(30176  ,opposition=3,host=3,file="kumbleVsSAInSA.csv",type="bowling")
-#muraliSA=getPlayerData(49636  ,opposition=3,host=3,file="muraliVsSAInSA.csv",type="bowling")
-#warneSA=getPlayerData(8166  ,opposition=3,host=3,file="warneVsSAInSA.csv",type="bowling")
 ```
 
 #11. Top international spinners against South Africa in South Africa
@@ -364,8 +316,11 @@ names <- list("Anil Kumble","M Muralitharan","Shane Warne")
 
 In South Africa too, Muralitharan has the best wicket taking performance averaging about 4
 wickets. Warne averages around 3 wickets and Kumble around 2 wickets
-```{r pic9,cache=TRUE}
+```{r pic9,cache=TRUE,warning=FALSE}
 relativeBowlerCumulativeAvgWickets(frames,names)
+
+# Muralitharan is expensive in South Africa too, while Kumble and Warne go neck-to-neck in the economy rate.
+# Kumble edges out Warne and has a better cumulative average economy rate
 relativeBowlerCumulativeAvgEconRate(frames,names)
 
 ```
@@ -397,9 +352,59 @@ names <- list("C Walsh","A Roberts","M Marshall","G McGrath")
 ```
 
 Courtney Walsh has the best performance, followed by Andy Roberts and then Glenn McGrath.
-On the contrary McGrath has the best economy rate, followed by A Roberts and then Courtney Walsh
-```{r pic10,,cache=TRUE}
+```{r pic10,,cache=TRUE,warning=FALSE}
 relativeBowlerCumulativeAvgWickets(frames,names)
+
+#On the other hand McGrath has the best economy rate, followed by A Roberts and then Courtney Walsh
 relativeBowlerCumulativeAvgEconRate(frames,names)
 
 ```
+
+
+###12. ODI performance of a player against a specific country in the host country
+This gets the data for MS Dhoni in ODI matches against Australia and in Australia
+```{r}
+#dhoniAusODI=getPlayerDataOD(28081,opposition=2,host=2,file="dhoniVsAusInAusODI.csv",type="batting")
+```
+
+
+###13. Twenty 20 performance of a player against a specific country in the host country
+```{r}
+#dhoniAusTT=getPlayerDataOD(28081,opposition=2,host=2,file="dhoniVsAusInAusTT.csv",type="batting")
+```
+
+
+### Some key observations
+Here are some key observations
+
+1. At the top of the batting spectrum is Don Bradman with a very impressive average 100-120 in 
+matches played in England and Australia. Unfortunately there weren't matches he played in other
+countries and different pitches.
+2.Viv Richard  has the best cumulative strike rate overall.
+3. Muralitharan strikes more often than Kumble or Warne even in pitches at ENgland, South Africa and
+West Indies. However Muralitharan is also the most expensive
+4. Warne and Kumble have a much better economy rate than Muralitharan.
+5. Sunil Gavaskar has an extremely impressive performance in West Indies.
+6. Rahul Dravid performs much bettern than Tendulkar in both England and West Indies.
+7. Virat Kohli has the best performance against Australia so far and hope he maintains his stellar performance
+followed by Sehawag. However Kohli's performance in England has been pathetic.
+8. West Indies batsmen and bowlers seem to thrive on Indian pitches, with Clive Lloyd and Alvin Kalicharran
+at the top of the list.
+
+
+You may like my Shiny apps on cricket
+
+1. [Inswinger- Analyzing International. T20s](https://tvganesh.shinyapps.io/inswingerFinal/)
+2. [GooglyPlus - An app for analyzing IPL](https://tvganesh.shinyapps.io/googlyPlus/)
+3. [Sixer - App based on R package cricketr](https://www.shinyapps.io/admin/#/application/71228)
+
+
+Also see
+
+1. [Exploring Quantum Gate operations with QCSimulator](https://gigadom.wordpress.com/2016/06/05/exploring-quantum-gate-operations-with-qcsimulator/)
+2. [Neural Networks: The mechanics of backpropagation](https://gigadom.wordpress.com/2017/01/21/neural-networks-the-mechanics-of-backpropagation/)
+3. [Re-introducing cricketr! : An R package to analyze performances of cricketers](https://gigadom.wordpress.com/2016/05/14/re-introducing-cricketr-an-r-package-to-analyze-performances-of-cricketers/)
+4. [yorkr crashes the IPL party ! - Part 1](https://gigadom.wordpress.com/2016/04/19/yorkr-crashes-the-ipl-party-part-1/)
+5. [cricketr and yorkr books - Paperback now in Amazon](https://gigadom.wordpress.com/2017/02/18/cricketr-and-yorkr-books-paperback-now-in-amazon/)
+
+To see all my posts see [Index of posts](https://gigadom.wordpress.com/aa-2/)
